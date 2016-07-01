@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="todoApp1">
+<head>
+    <title></title>
+    <script src="Scripts/angular.js"></script>
+    <script src="js/TodoList.js"></script>
+</head>
+<body ng-controller="todocontroller">
+    Search by name:
+    <input type="text" ng-model="search.name" />
+    Search by Option:
+    <input type="text" ng-model="searchOption.singleSelect" />
+    <br />
+    <div ng-repeat="todo in todolist | filter:search | filter:searchOption track by $index">
+        <input type="checkbox" checked="todo.checked" ng-model="todo.checked" ng-change="Checkbokchange(todo,$index)" />
+        {{todo.name}}
+        {{todo.singleSelect}}
+        <input type="button" value="X" ng-click="deleteClick($index)" />
+    </div>
+    <input ng-model="name" type="text"></input>
+    <select ng-model="singleSelect">
+        <option value="select" selected="selected">Select</option>
+        <option value="option-1">Option 1</option>
+        <option value="option-2">Option 2</option>
+        <option value="option-3">Option 3</option>
+    </select>
+    <input type="submit" value="Submit" ng-click="submitclick()" />
+
+    <div ng-repeat="todo in Archivelist track by $index">
+        {{todo.name}}
+    </div>
+
+</body>
+</html>
